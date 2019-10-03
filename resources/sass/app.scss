@@ -1,0 +1,252 @@
+@tailwind preflight;
+
+@tailwind components;
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.notification-bubble {
+  @apply .bg-red-light .text-white .inline-flex .relative .py-1 .px-2 .rounded-full .font-bold .justify-center .items-center;
+  left: -30px;
+}
+
+.user-avatar {
+  @apply .h-16 .w-16 .rounded-full .border-white .border-2;
+}
+
+.button {
+  @apply .text-white .font-bold .no-underline .w-full .py-4 .block .text-center
+        .rounded .bg-blue-dark .text-lg .shadow .tracking-wide .cursor-pointer;
+  transition: background-color, color, 0.3s;
+  &:hover {
+    @apply .bg-white .text-blue;
+  }
+}
+
+.link {
+  @apply .text-blue .no-underline .cursor-pointer;
+}
+
+
+.form-input {
+  @apply .w-full .py-5 .px-2 .text-lg .rounded .bg-white .outline-none .shadow-md .text-grey-darkest;
+  &:focus {
+    @apply .shadow-outline;
+  }
+}
+
+.form-input-error {
+  @apply .border-2 .border-red-lighter;
+}
+
+.form-select {
+  @apply .appearance-none .bg-white .border .border-grey-light .px-4 .py-2 .pr-8 .ml-2 .rounded .shadow-md .leading-tight .text-grey-darkest;
+}
+
+.form-submit {
+  @apply .block .py-4 .px-4 .text-lg .text-white .bg-blue-dark .mt-4 .rounded .outline-none .cursor-pointer .shadow;
+  transition: background-color, color, 0.3s;
+  &:hover {
+    @apply .bg-white .text-blue;
+  }
+}
+
+.axios-search-suggestion-container {
+  @apply .flex .justify-start .items-center .w-full .flex-wrap;
+}
+
+.axios-search-suggestion {
+  //@apply  .flex .justify-center .items-center .text-blue .bg-transparent .flex-1 .my-2 .pr-2 .cursor-pointer;
+}
+
+.navbar-list-item {
+  @apply .bg-blue-dark;
+  transition: background-color, 0.3s;
+  &:hover {
+    @apply .bg-blue;
+  }
+}
+
+.main-navbar-link {
+  @apply .flex .justify-center .items-center .text-white .no-underline .h-full .text-lg .bg-transparent;
+}
+
+.profile-list-item {
+  @apply .py-8 .text-xl .flex .justify-between .items-center .text-grey-darker;
+}
+
+#main-header {
+    @apply .flex .items-center .justify-between .p-6 .bg-blue-dark .fixed .w-full;
+    height: 15vh;
+}
+
+#app {
+    margin-top: 15vh;
+}
+
+#closeNav {
+  position: relative;
+  //bottom: 35px;
+}
+
+.flash-show {
+    animation: flash-show 1s ease-out 1s both;
+}
+
+.flash-hide {
+    animation: flash-hide 1s ease-out both;
+}
+
+.flash-success, flash-error {
+    @apply  .fixed .pin-b .pin-r .flex .justify-center .items-center .rounded-lg .w-full .py-10;
+
+    &::after {
+        border-left: 20px solid transparent;
+        bottom: -20px;
+        content: "";
+        position: absolute;
+        right: 20px;
+    }
+}
+
+.flash-success {
+    @apply .bg-green;
+    &::after {
+        border-top: 20px solid #38c172;
+    }
+}
+
+.flash-error {
+    @apply .bg-red;
+    &::after {
+        border-top: 20px solid #e3342f;
+    }
+}
+//
+//.flash-error {
+//    @apply  .fixed .bg-red .pin-b .pin-r .w-1/3 .h-32 .mr-10 .mb-10 .flex .justify-center .items-center .rounded-lg;
+//
+//    &::after {
+//        border-left: 20px solid transparent;
+//        bottom: -20px;
+//        content: "";
+//        position: absolute;
+//        right: 0;
+//    }
+//}
+
+.profile-background {
+  @apply .px-3 .pt-5 .mt-5 .rounded-lg;
+  background-color: rgb(255, 255, 255, 90%);
+}
+
+
+@screen md {
+    .form {
+        background-color: rgb(202, 202, 202, 50%);
+    }
+
+    .profile-background {
+      @apply p-10;
+      background-color: rgb(255, 255, 255, 90%);
+    }
+
+    .flash-success, .flash-error {
+        @apply  .w-1/3 .h-32 .mr-10 .mb-10;
+    }
+
+}
+
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+
+.profile-option-panel-hidden, .send-private-message-hidden {
+  display: none;
+  height: 0;
+  transition: height 350ms ease-in-out;
+}
+
+.profile-option-panel-visible, .send-private-message-visible {
+  display: block;
+  height: auto;
+}
+
+.main-navbar-container {
+  height: 85vh;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 15vh;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  .main-navbar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    ul {
+      li {
+        color: transparent;
+        flex: 1;
+      }
+    }
+  }
+}
+.svg-filter-blue {
+    filter: invert(70%) sepia(8%) saturate(3003%) hue-rotate(175deg) brightness(95%) contrast(93%);
+}
+
+/** Keyframes **/
+@keyframes flash-show {
+    0% {
+        transform: translate(1000px, 1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes flash-hide {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(1000px, 1000px);
+        opacity: 0;
+    }
+}
